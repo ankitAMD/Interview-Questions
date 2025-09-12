@@ -1,0 +1,698 @@
+---
+
+# 🗓️ Daily Linux/DevOps Troubleshooting Practice Plan
+
+### **Day 1 – High CPU Usage**
+
+> Problem: Suddenly server CPU usage is 90%. You need to find which process is consuming the most CPU.
+
+✅ Command:
+
+```bash
+ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head -15
+```
+
+👉 Output shows top 15 processes sorted by CPU usage.
+
+---
+
+### **Day 2 – High Memory Usage**
+
+> Problem: Application is slow. You suspect memory leak. Find which process is eating memory.
+
+✅ Command:
+
+```bash
+ps -eo pid,ppid,cmd,%mem --sort=-%mem | head -15
+```
+
+---
+
+### **Day 3 – Disk Full**
+
+> Problem: Server disk is 100% full. Find which directory is consuming most space.
+
+✅ Command:
+
+```bash
+du -h --max-depth=1 / | sort -hr
+```
+
+---
+
+### **Day 4 – Find Largest Files**
+
+> Problem: A log file has grown unexpectedly large. Find the largest files on the server.
+
+✅ Command:
+
+```bash
+find / -type f -exec du -Sh {} + | sort -rh | head -10
+```
+
+---
+
+### **Day 5 – Port Conflict**
+
+> Problem: Your app fails to start because port 8000 is already in use. Find which process is using it.
+
+✅ Command:
+
+```bash
+sudo lsof -i :8000
+```
+
+---
+
+### **Day 6 – Who Logged In**
+
+> Problem: Someone restarted services. Find out who logged into the server recently.
+
+✅ Command:
+
+```bash
+w
+last -n 10
+```
+
+---
+
+### **Day 7 – Real-Time Logs**
+
+> Problem: API requests are failing. Watch logs in real time.
+
+✅ Command:
+
+```bash
+tail -f /var/log/nginx/error.log
+```
+
+---
+
+### **Day 8 – Real-Time Network Monitoring**
+
+> Problem: High network load. Check which connections are active.
+
+✅ Command:
+
+```bash
+ss -tulnp
+```
+
+---
+
+### **Day 9 – Trace Connectivity**
+
+> Problem: Users can’t reach your server from Europe. Trace the network path.
+
+✅ Command:
+
+```bash
+traceroute google.com
+```
+
+---
+
+### **Day 10 – Check Services**
+
+> Problem: API stopped responding. Check if service is running.
+
+✅ Command:
+
+```bash
+systemctl status nginx
+```
+
+---
+
+Here’s the structured plan:
+
+---
+
+# 🛠️ 90-Day Linux/DevOps Troubleshooting Challenge
+
+---
+
+## **🔹 Phase 1 (Day 1–30) – Core Linux Troubleshooting**
+
+Learn the most important **CPU, Memory, Disk, Network, Logs** commands.
+
+**Day 1 – Check top CPU consuming processes**
+
+```bash
+ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head -15
+```
+
+**Day 2 – Check top Memory consuming processes**
+
+```bash
+ps -eo pid,ppid,cmd,%mem --sort=-%mem | head -15
+```
+
+**Day 3 – Find which directory is consuming most space**
+
+```bash
+du -h --max-depth=1 / | sort -hr
+```
+
+**Day 4 – Find 10 largest files in server**
+
+```bash
+find / -type f -exec du -Sh {} + | sort -rh | head -10
+```
+
+**Day 5 – Find process running on port 8000**
+
+```bash
+sudo lsof -i :8000
+```
+
+**Day 6 – Check logged-in users**
+
+```bash
+w
+last -n 10
+```
+
+**Day 7 – Live log monitoring**
+
+```bash
+tail -f /var/log/syslog
+```
+
+**Day 8 – Active network connections**
+
+```bash
+ss -tulnp
+```
+
+**Day 9 – Trace network path to google**
+
+```bash
+traceroute google.com
+```
+
+**Day 10 – Check service status**
+
+```bash
+systemctl status nginx
+```
+
+**Day 11 – Restart a service safely**
+
+```bash
+systemctl restart apache2
+```
+
+**Day 12 – See kernel version**
+
+```bash
+uname -r
+```
+
+**Day 13 – Check uptime/load**
+
+```bash
+uptime
+```
+
+**Day 14 – Monitor processes live**
+
+```bash
+top
+htop  # if installed
+```
+
+**Day 15 – Check open ports**
+
+```bash
+netstat -tulnp
+```
+
+**Day 16 – Count number of processes**
+
+```bash
+ps aux | wc -l
+```
+
+**Day 17 – Find zombie processes**
+
+```bash
+ps aux | grep 'Z'
+```
+
+**Day 18 – Monitor disk I/O**
+
+```bash
+iostat
+```
+
+**Day 19 – Monitor memory usage in MB**
+
+```bash
+free -m
+```
+
+**Day 20 – Check CPU details**
+
+```bash
+lscpu
+```
+
+**Day 21 – Check memory details**
+
+```bash
+cat /proc/meminfo
+```
+
+**Day 22 – Who restarted the server?**
+
+```bash
+last reboot
+```
+
+**Day 23 – Find failed login attempts**
+
+```bash
+grep "Failed password" /var/log/auth.log
+```
+
+**Day 24 – List listening services**
+
+```bash
+ss -ltn
+```
+
+**Day 25 – Count established connections**
+
+```bash
+ss -s
+```
+
+**Day 26 – Test DNS resolution**
+
+```bash
+dig google.com
+```
+
+**Day 27 – Check current network bandwidth**
+
+```bash
+iftop   # if installed
+```
+
+**Day 28 – Monitor disk usage in real time**
+
+```bash
+iotop   # if installed
+```
+
+**Day 29 – Kill process by PID**
+
+```bash
+kill -9 <pid>
+```
+
+**Day 30 – Kill process by name**
+
+```bash
+pkill nginx
+```
+
+---
+
+## **🔹 Phase 2 (Day 31–60) – Advanced Troubleshooting**
+
+Now move to **logs, permissions, security, system performance.**
+
+**Day 31 – Find which process is consuming swap**
+
+```bash
+smem -rs swap
+```
+
+**Day 32 – Show failed systemd services**
+
+```bash
+systemctl --failed
+```
+
+**Day 33 – Check cron jobs**
+
+```bash
+crontab -l
+```
+
+**Day 34 – Check system boot logs**
+
+```bash
+dmesg | less
+```
+
+**Day 35 – Check which files are opened by a process**
+
+```bash
+lsof -p <pid>
+```
+
+**Day 36 – Track real-time file writes**
+
+```bash
+inotifywait -m /var/log/
+```
+
+**Day 37 – Monitor disk usage growth**
+
+```bash
+watch -n 10 df -h
+```
+
+**Day 38 – Check who changed files recently**
+
+```bash
+ls -lt /etc/
+```
+
+**Day 39 – List processes sorted by memory**
+
+```bash
+ps aux --sort=-%mem | head -10
+```
+
+**Day 40 – Show which users are using most processes**
+
+```bash
+ps -eo user= | sort | uniq -c | sort -nr
+```
+
+**Day 41 – Monitor Apache workers**
+
+```bash
+apache2ctl status
+```
+
+**Day 42 – Check open files limit**
+
+```bash
+ulimit -n
+```
+
+**Day 43 – Check number of file handles in use**
+
+```bash
+lsof | wc -l
+```
+
+**Day 44 – Show blocked processes**
+
+```bash
+dstat -tclm
+```
+
+**Day 45 – Monitor network packets live**
+
+```bash
+tcpdump -i eth0
+```
+
+**Day 46 – Find IP making most requests**
+
+```bash
+awk '{print $1}' /var/log/apache2/access.log | sort | uniq -c | sort -nr | head -10
+```
+
+**Day 47 – Check who has sudo access**
+
+```bash
+grep 'sudo' /etc/group
+```
+
+**Day 48 – Show all environment variables**
+
+```bash
+printenv
+```
+
+**Day 49 – Check which commands user ran**
+
+```bash
+history | less
+```
+
+**Day 50 – Find processes locking files**
+
+```bash
+lsof /var/lib/dpkg/lock
+```
+
+**Day 51 – Check current runlevel**
+
+```bash
+who -r
+```
+
+**Day 52 – Find disk inodes usage**
+
+```bash
+df -i
+```
+
+**Day 53 – List mounted filesystems**
+
+```bash
+mount | column -t
+```
+
+**Day 54 – Check systemd logs**
+
+```bash
+journalctl -xe
+```
+
+**Day 55 – Restart only failed services**
+
+```bash
+systemctl --failed --no-legend | awk '{print $1}' | xargs systemctl restart
+```
+
+**Day 56 – Check last modified config files**
+
+```bash
+find /etc -type f -mtime -1
+```
+
+**Day 57 – Check permissions recursively**
+
+```bash
+ls -lR /var/www/
+```
+
+**Day 58 – See hidden processes**
+
+```bash
+ps -auxf
+```
+
+**Day 59 – Track live CPU per core**
+
+```bash
+mpstat -P ALL 2
+```
+
+**Day 60 – Show top I/O consuming processes**
+
+```bash
+iotop -o
+```
+
+---
+
+## **🔹 Phase 3 (Day 61–90) – Expert Level**
+
+Focus on **performance tuning, debugging crashes, and proactive monitoring.**
+
+**Day 61 – Check SELinux/AppArmor status**
+
+```bash
+getenforce   # SELinux
+aa-status    # AppArmor
+```
+
+**Day 62 – Debug why service failed**
+
+```bash
+journalctl -u nginx.service --since "10 min ago"
+```
+
+**Day 63 – Show all listening sockets**
+
+```bash
+ss -plntu
+```
+
+**Day 64 – Show all firewall rules**
+
+```bash
+sudo iptables -L -v -n
+```
+
+**Day 65 – Check failed system logins with IPs**
+
+```bash
+grep "Failed password" /var/log/auth.log | awk '{print $(NF-3)}' | sort | uniq -c | sort -nr | head
+```
+
+**Day 66 – Limit a process CPU usage**
+
+```bash
+cpulimit -p <pid> -l 30
+```
+
+**Day 67 – Find processes eating bandwidth**
+
+```bash
+nethogs
+```
+
+**Day 68 – Analyze system crash logs**
+
+```bash
+journalctl -b -1
+```
+
+**Day 69 – Show filesystem usage per mount**
+
+```bash
+df -Th
+```
+
+**Day 70 – Check which kernel modules are loaded**
+
+```bash
+lsmod
+```
+
+**Day 71 – Show hardware devices**
+
+```bash
+lshw -short
+```
+
+**Day 72 – Show all running containers**
+
+```bash
+docker ps
+```
+
+**Day 73 – Inspect container resource usage**
+
+```bash
+docker stats
+```
+
+**Day 74 – Show which process is using GPU (if any)**
+
+```bash
+nvidia-smi
+```
+
+**Day 75 – Find file descriptors used by process**
+
+```bash
+ls /proc/<pid>/fd
+```
+
+**Day 76 – Monitor DNS queries live**
+
+```bash
+tcpdump -i eth0 port 53
+```
+
+**Day 77 – Show routing table**
+
+```bash
+ip route show
+```
+
+**Day 78 – Check ARP table**
+
+```bash
+arp -a
+```
+
+**Day 79 – Block an IP temporarily**
+
+```bash
+sudo iptables -A INPUT -s 1.2.3.4 -j DROP
+```
+
+**Day 80 – List users currently logged in with tty**
+
+```bash
+who
+```
+
+**Day 81 – Show failed sudo attempts**
+
+```bash
+grep "sudo" /var/log/auth.log | grep "incorrect"
+```
+
+**Day 82 – Monitor filesystem changes in real time**
+
+```bash
+inotifywait -m /etc/
+```
+
+**Day 83 – Trace system calls by process**
+
+```bash
+strace -p <pid>
+```
+
+**Day 84 – Debug memory usage of process**
+
+```bash
+pmap <pid>
+```
+
+**Day 85 – Show file system quota**
+
+```bash
+quota -u username
+```
+
+**Day 86 – Show kernel messages live**
+
+```bash
+dmesg -w
+```
+
+**Day 87 – Limit connections per IP in Apache**
+
+```bash
+apache2ctl configtest
+```
+
+**Day 88 – Find slow MySQL queries**
+
+```bash
+cat /var/log/mysql/slow.log
+```
+
+**Day 89 – Check TCP retransmissions**
+
+```bash
+netstat -s | grep retrans
+```
+
+**Day 90 – Full health check of server (one-liner)**
+
+```bash
+uptime && free -m && df -h && ss -tulnp | grep LISTEN
+```
+
+---
+
+
+
