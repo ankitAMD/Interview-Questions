@@ -1,0 +1,178 @@
+
+# 🟢 **AWS Free Tier Duration**
+
+* The **free tier is available for 12 months** from the day you create your AWS account.
+* After 12 months → free tier expires, and you’ll be charged standard pay-as-you-go rates.
+
+---
+
+## 📊 **AWS Free Tier Benefits (Most Common Services)**
+
+| Service                   | Free Tier Limit                                                 | Duration    | Notes                                                                     |
+| ------------------------- | --------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------- |
+| **EC2 (Virtual Servers)** | 750 hours/month of **t2.micro** or **t3.micro** (Linux/Windows) | 12 months   | Enough to run **1 instance 24/7**. If you launch more, you’ll be charged. |
+| **S3 (Storage)**          | 5 GB Standard storage                                           | 12 months   | With 20,000 GET requests + 2,000 PUT requests free.                       |
+| **RDS (Databases)**       | 750 hours/month of db.t2.micro / db.t3.micro + 20 GB storage    | 12 months   | Supports MySQL, PostgreSQL, MariaDB, SQL Server.                          |
+| **Lambda**                | 1 million requests + 400,000 GB-seconds compute                 | Always free | Does not expire after 12 months.                                          |
+| **CloudFront (CDN)**      | 50 GB data transfer + 2M requests                               | 12 months   | Useful for website content delivery.                                      |
+| **DynamoDB**              | 25 GB storage + 25 Read/Write capacity units                    | Always free | Continues even after 12 months.                                           |
+| **API Gateway**           | 1 million API calls/month                                       | 12 months   | After that → charged.                                                     |
+| **CloudWatch**            | 10 custom metrics + 1 million API requests                      | 12 months   | Monitoring service.                                                       |
+
+---
+
+## 🔄 **Always Free (No Expiry)**
+
+Some services are *always free* within certain limits:
+
+* **AWS Lambda** (1M requests/month)
+* **DynamoDB** (25 GB)
+* **Glacier** (10 GB retrievals)
+* **SNS** (1M notifications/month)
+
+---
+
+## ⚠️ Important Notes
+
+* You must add a **credit/debit card** to create an AWS account (₹2 will be deducted for verification).
+* If you go **beyond free tier limits**, AWS will charge you.
+* Good practice: set up a **Billing Alarm** in CloudWatch to get alerts if costs cross, say **\$5**.
+
+---
+
+💡 In INR terms:
+Free tier itself = **₹0**, but once you cross limits → charges can quickly grow (example: running bigger EC2 instances or storing large data in S3).
+
+---
+
+👉 Do you want me to create a **step-by-step guide with screenshots** on how to:
+
+1. Enable free tier,
+2. Track usage,
+3. Set billing alarms — so you never get surprise AWS bills?
+
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Excellent that you’re asking this now ⚡ — many people end up with **unexpected AWS bills** because they don’t know the limits. Let me explain step by step:
+
+---
+
+## 💳 1. If you add a credit card, will AWS auto-charge?
+
+✅ Yes.
+
+* When you create an AWS account, you must add a **credit/debit card**.
+* AWS will deduct a **small verification charge (\$1 or ₹2 in India)** which is refunded.
+* If you cross **Free Tier limits**, AWS will **automatically charge your card** at the end of the billing cycle.
+
+---
+
+## 📊 2. How much can you run for free?
+
+The **biggest free limits** (for 12 months) are:
+
+* **EC2** → 750 hours/month = 1 t2.micro or t3.micro instance running 24/7.
+* **RDS** → 750 hours/month = 1 small database instance.
+* **S3** → 5 GB storage.
+* **CloudFront** → 50 GB/month.
+* **Lambda** → 1M requests (Always Free).
+
+👉 If you launch more than this, or choose **bigger instances (e.g., t2.medium, m5.large)**, you’ll start paying.
+
+---
+
+## 🚨 3. What happens if a bill is generated and unpaid?
+
+* AWS will **try to charge your card** automatically.
+* If payment fails → they will **suspend your account**.
+* If unpaid for a long time → the account can be **terminated** and resources deleted.
+* AWS doesn’t allow you to “skip” bills and keep using resources.
+
+---
+
+## 🛡️ 4. How to **limit usage** to Free Tier only?
+
+Here are safe practices:
+
+### ✅ Step 1: Enable **Free Tier Usage Alerts**
+
+* Go to **AWS Billing Console** → “Billing Preferences.”
+* Tick **Receive Free Tier Usage Alerts** → enter email.
+* AWS will warn you when you cross limits.
+
+### ✅ Step 2: Set a **Billing Alarm** in CloudWatch
+
+* Create an alarm at **\$1 or \$5**.
+* You’ll get email/SMS if costs go above.
+* Example: “Stop using EC2, you’re now billed \$2.”
+
+### ✅ Step 3: Use **AWS Budgets → Hard Limit**
+
+* In **AWS Budgets**, set a monthly limit (e.g., \$0 or \$5).
+* You’ll get alerts if usage exceeds.
+  ⚠️ AWS won’t stop services automatically — but you’ll know early.
+
+### ✅ Step 4: Manually Track Usage
+
+* Use **AWS Cost Explorer** to check daily charges.
+* Shut down unused EC2/RDS instances.
+
+---
+
+## 🔒 5. Pro-Safety Trick (for learners)
+
+* Create an **IAM User** (not root account).
+* Assign only free-tier services.
+* Use **AWS Sandbox accounts** (like qwiklabs or skillbuilder labs) if experimenting with expensive services.
+
+---
+
+👉 Short answer:
+
+* Yes, card is auto-charged if you cross free tier.
+* You can safely run **1 EC2 + 1 RDS + 5GB S3** within free limits.
+* To avoid bills: **enable billing alarms + budgets + free tier alerts**.
+
+---
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Good question 👍 Let me clarify how AWS billing works in the **Free Tier**:
+
+### 🔹 1. Why automatic cut happens?
+
+When you sign up for AWS, you **must add a valid debit/credit card** (for identity verification).
+
+* If you only use services **within Free Tier limits**, you won’t be charged.
+* If you **exceed Free Tier usage**, AWS automatically charges your card for the extra usage — there is no manual approval step.
+  That’s why it feels like an *automatic cut*.
+
+### 🔹 2. Can you stop automatic charges?
+
+By default, **you cannot prevent AWS from charging** if you cross limits.
+But you can **control and limit usage** using:
+
+* **Budgets & Alerts**: Set a **\$0 spending budget** in AWS Billing → Budgets. You’ll get email/SMS alerts if usage exceeds.
+* **Service Quotas**: Manually restrict usage (like limiting EC2 instance size/count).
+* **IAM policies**: Create permissions that block launching paid services.
+* **Close resources**: Stop/delete EC2, RDS, S3, etc. if not using.
+
+### 🔹 3. What if you don’t pay AWS bill?
+
+* AWS will keep your account in **“past due”** state.
+* Services may get **suspended** until payment.
+* If unpaid for long, account could be **terminated**, but outstanding bills remain linked to your card.
+  So better to **pay small charges** if they occur, or dispute via AWS support if you think it was wrong.
+
+---
+
+👉 For **safe practice**:
+
+* Use **only free tier eligible services**.
+* Set a **\$0 budget with alerts**.
+* Run only **1 small instance (t2.micro / t3.micro)** at a time.
+* Regularly check **Billing Dashboard → Free Tier Usage**.
+
+
