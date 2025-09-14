@@ -220,3 +220,93 @@ git revert --continue
 👉 This covers **all your asked queries** till now.
 
 Do you want me to also make a **visual Git flow example** (with diagrams showing HEAD, commits, revert vs reset)? That will make it crystal clear.
+
+
+
+Perfect 👍 You ran
+
+```bash
+git diff .
+```
+
+and saw this output:
+
+```
+diff --git a/abc.txt b/abc.txt
+index b12187e..e03eaf9 100644
+--- a/abc.txt
++++ b/abc.txt
+@@ -1,3 +1,4 @@
+ "added 6th Commiit"
+ "7th commit "
+ "8th commit "
++"new"
+```
+
+Let’s break it step by step 👇
+
+---
+
+## 🔹 1. `diff --git a/abc.txt b/abc.txt`
+
+* Git is showing the **difference between the last committed version** (`a/abc.txt`) and the **current working directory** (`b/abc.txt`).
+
+---
+
+## 🔹 2. `index b12187e..e03eaf9 100644`
+
+* `b12187e` → checksum (hash) of the old file version.
+* `e03eaf9` → checksum of the new file version.
+* `100644` → file permissions (normal file, read/write).
+
+This line just tells Git internally how the file changed (not super important for day-to-day work).
+
+---
+
+## 🔹 3. `--- a/abc.txt` and `+++ b/abc.txt`
+
+* `---` means the **old file (before changes)**.
+* `+++` means the **new file (after changes)**.
+
+---
+
+## 🔹 4. `@@ -1,3 +1,4 @@`
+
+* `-1,3` → In the old file, 3 lines starting from line 1.
+* `+1,4` → In the new file, 4 lines starting from line 1.
+
+That means: a new line was added, so the file grew from 3 lines → 4 lines.
+
+---
+
+## 🔹 5. The actual diff
+
+```
+ "added 6th Commiit"
+ "7th commit "
+ "8th commit "
++"new"
+```
+
+* Lines without symbols (`"added 6th Commit"`, `"7th commit "`, `"8th commit "`) = unchanged.
+* `+ "new"` → new line added.
+* If there were a `- line`, it would mean a line was deleted.
+
+---
+
+✅ **So in plain English:**
+This `git diff` output is telling you:
+👉 You added a new line `"new"` at the end of `abc.txt`, but you haven’t staged (`git add`) or committed it yet.
+
+---
+
+⚡Tip:
+
+* `git diff` → shows **unstaged changes** (working directory vs last commit).
+* `git diff --cached` → shows **staged changes** (index vs last commit).
+* `git diff HEAD` → shows **all changes (staged + unstaged) vs last commit**.
+
+---
+
+Do you want me to also give you a **step-by-step example with git add + git diff --cached** so you can see the difference between *unstaged* vs *staged*?
+
