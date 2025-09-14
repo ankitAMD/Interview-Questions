@@ -308,5 +308,57 @@ This `git diff` output is telling you:
 
 ---
 
-Do you want me to also give you a **step-by-step example with git add + git diff --cached** so you can see the difference between *unstaged* vs *staged*?
+Good question 👍 Let’s break this down clearly:
+
+---
+
+### 🔹 `git log --oneline`
+
+* Shows a **simplified commit history**.
+* Each commit is displayed as:
+
+  ```
+  <short-hash> <commit message>
+  ```
+* Example:
+
+  ```
+  0988d7e Added 9th commit in abc.txt
+  e8914be Addded 6th commit in both file abc.txt and abc2.txt
+  6cd82ca abc.txt
+  ```
+
+👉 Useful when you just want a **linear, simple list** of commits.
+
+---
+
+### 🔹 `git log --oneline --graph`
+
+* Adds an **ASCII graph** (branching tree diagram) alongside commits.
+* Shows **branches, merges, and commit relationships** visually.
+* Example:
+
+  ```
+  * 0988d7e Added 9th commit in abc.txt
+  * e8914be Addded 6th commit in both file abc.txt and abc2.txt
+  | * 22e0007 I revert and come upto 3rd commit
+  |/  
+  * 6cd82ca abc.txt
+  ```
+
+👉 Useful when you want to **see branching, merging, and commit structure**, not just a flat list.
+
+---
+
+### ✅ Difference Summary:
+
+| Command                     | Shows                                              | Use Case                                          |
+| --------------------------- | -------------------------------------------------- | ------------------------------------------------- |
+| `git log --oneline`         | Short commit list (linear)                         | Quick overview                                    |
+| `git log --oneline --graph` | Short commit list + visual tree of branches/merges | Understand project history, branching, and merges |
+
+---
+
+Would you like me to show you an **example with branch + merge commits**, so you can **see the difference in output** between these two commands?
+
 
