@@ -1,0 +1,222 @@
+Perfect 👍 Let’s organize all your **Git-related queries** into a clean **Question–Answer format** with commands and explanations. This will become a **handy Git notes/cheatsheet** for you 🚀
+
+---
+
+# 📘 Git Q\&A Collection
+
+---
+
+### 1. ❓ Can we create a file/directory using Git command or Git only tracks files?
+
+✅ **Answer:**
+Git itself does **not create files or directories**. It only **tracks versioning** of files.
+👉 You create files normally (`echo`, `touch`, `mkdir`), then add and commit them with Git.
+
+---
+
+### 2. ❓ How to unstage a file after `git add`?
+
+✅ **Answer:**
+
+```sh
+git reset HEAD <file>
+```
+
+* Removes the file from staging but keeps changes in working directory.
+
+---
+
+### 3. ❓ What does `HEAD` mean in Git?
+
+✅ **Answer:**
+
+* `HEAD` is a **pointer to the latest commit in the current branch**.
+  Example:
+
+```sh
+git reset HEAD app.py
+```
+
+* Here, `HEAD` means *“reset app.py to match the last commit in current branch”*.
+
+---
+
+### 4. ❓ Difference between `git reset` and `git rm`?
+
+✅ **Answer:**
+
+* `git reset HEAD <file>` → **unstages** a file but keeps it in working dir.
+* `git rm <file>` → **removes** the file from working dir *and stages the deletion*.
+
+---
+
+### 5. ❓ Command to print a file in Windows CMD?
+
+✅ **Answer:**
+
+```sh
+type <filename>
+```
+
+Example:
+
+```sh
+type abc.txt
+```
+
+---
+
+### 6. ❓ How to revert the last commit?
+
+✅ **Answer:**
+
+```sh
+git revert HEAD
+```
+
+This creates a **new commit** that undoes changes from the last commit.
+
+---
+
+### 7. ❓ How to revert a commit before the last one (e.g. 2nd last)?
+
+✅ **Answer:**
+
+```sh
+git revert <commit-hash>
+```
+
+Example:
+
+```sh
+git revert d4e5f6g
+```
+
+👉 Might create conflicts → fix → `git add <file>` → `git revert --continue`.
+
+---
+
+### 8. ❓ How to handle conflict when reverting?
+
+✅ **Answer:**
+Steps when you see *“unmerged files”*:
+
+```sh
+# Check conflicts
+git status  
+
+# Edit files and fix conflicts manually  
+
+# Stage fixed files
+git add <file>
+
+# Continue revert
+git revert --continue
+```
+
+Or:
+
+* `git revert --abort` → cancel the revert
+* `git revert --skip` → skip that commit
+
+---
+
+### 9. ❓ How to revert multiple commits at once?
+
+✅ **Answer:**
+
+```sh
+git revert HEAD~2..HEAD
+```
+
+* Reverts last 2 commits.
+* Each commit gets reverted one by one.
+
+---
+
+### 10. ❓ How to completely remove last 2 commits (instead of reverting)?
+
+✅ **Answer:**
+
+```sh
+git reset --hard HEAD~2
+```
+
+⚠️ DANGEROUS → rewrites history, use only if commits aren’t pushed to remote.
+
+---
+
+### 11. ❓ Example log & revert confusion
+
+Your `git log`:
+
+```
+b0037f6 (HEAD -> master) added one line more
+7f21305 ADDED HELLO Command
+90bbe25 Revert "Added hello command"
+0b3d97c append the new Hello with existing
+9835d0a Added hello command
+5fe2166 deleted abc.txt
+6711432 abc2.txt
+6cd82ca abc.txt
+```
+
+* To **revert commit `b0037f6`** (last one):
+
+  ```sh
+  git revert b0037f6
+  ```
+* To **revert commit `7f21305`** (not last one):
+
+  ```sh
+  git revert 7f21305
+  ```
+
+  ⚠️ May cause conflicts → resolve, then `git revert --continue`.
+
+---
+
+### 12. ❓ How to see Git log in short format?
+
+✅ **Answer:**
+
+```sh
+git log --oneline
+```
+
+Shows: `<hash> <commit message>`
+
+---
+
+### 13. ❓ How to stage resolved conflicts after revert?
+
+✅ **Answer:**
+
+```sh
+git add <file>
+git revert --continue
+```
+
+---
+
+# 📜 Git Command Reference
+
+| Command                   | Description                                  |
+| ------------------------- | -------------------------------------------- |
+| `git init`                | Initialize a repo                            |
+| `git add <file>`          | Stage file                                   |
+| `git reset HEAD <file>`   | Unstage file                                 |
+| `git commit -m "msg"`     | Commit changes                               |
+| `git log --oneline`       | Show short commit history                    |
+| `git revert <hash>`       | Revert a specific commit                     |
+| `git revert HEAD~2..HEAD` | Revert last 2 commits                        |
+| `git reset --hard HEAD~2` | Reset branch back 2 commits (erases history) |
+| `git status`              | Show current status                          |
+| `git rm <file>`           | Remove file and stage deletion               |
+| `type <file>` (Windows)   | Print file contents                          |
+
+---
+
+👉 This covers **all your asked queries** till now.
+
+Do you want me to also make a **visual Git flow example** (with diagrams showing HEAD, commits, revert vs reset)? That will make it crystal clear.
