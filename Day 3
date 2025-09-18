@@ -366,6 +366,28 @@ HEAD = your branch
 
 Updated upstream / Stashed changes = additional conflict markers Git shows when stash is involved 
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Git checkout is also used to undo the changes in the file and switch the branch.
+
+C:\Users\ankit.gupta\Downloads\GitTest>git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   abc.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\Users\ankit.gupta\Downloads\GitTest>git checkout abc.txt
+Updated 1 path from the index
+
+C:\Users\ankit.gupta\Downloads\GitTest>git status
+On branch master
+nothing to commit, working tree clean
+----------------------------------------------------------------------------------------
+
+
  
 
 
