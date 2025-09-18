@@ -286,6 +286,88 @@ Exactly ✅ — Git is not an example of SVCN
 | Server dependency    | Low                                           | High                      |
 | Collaboration model  | Distributed (peer-to-peer + optional central) | Centralized (hub & spoke) |
 
+...................................................................................................................................................
+
+18-09-2025 
+
+Git log merge 
+
+✅ Correct Summary of Commands 
+
+Show only merges: 
+
+git log –merges 
+
+ 
+
+ 
+ 
+
+Show without merges: 
+
+git log --no-merges 
+
+ 
+ 
+
+Show graph with merges: 
+
+git log --oneline --graph --decorate –all 
+
+ 
+
+ 
+ 
+
+Show commits inside a merge: 
+
+git log <merge_commit>^1..<merge_commit>^2 
+
+ 
+
+✅ Final Mapping 
+
+HEAD section (before =======) → your branch (current branch) 
+
+After ======= until >>>>>>> dev → incoming branch (dev) + maybe stash 
+
+Extra markers (Updated upstream / Stashed changes) → Git trying to merge stash with branch 
+
+ 
+
+⚡ So rule of thumb: 
+
+Before ======= = current branch (HEAD) 
+
+After ======= = branch you are merging in (e.g., dev) 
+
+Resolve conflict: 
+
+Decide manually which lines you want. 
+ For example, final file might look like this if you want to keep both: 
+
+ 
+
+Remove all the markers (<<<<<<<, =======, >>>>>>>). 
+
+Mark conflict as resolved: 
+
+git add abc.txt 
+git commit 
+ 
+
+ 
+
+✅ So in short: 
+
+HEAD = your branch 
+
+>>>>>>> dev = branch you merged 
+
+Updated upstream / Stashed changes = additional conflict markers Git shows when stash is involved 
+
+ 
+
 
 
 
