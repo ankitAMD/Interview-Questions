@@ -1,0 +1,62 @@
+why do we need source code management as a Devops Engineer?
+Good question 👍 As a **DevOps Engineer**, source code management (SCM) like **Git, GitHub, GitLab, Bitbucket** is absolutely essential. Here are the main reasons, in clear points:
+
+---
+
+## 🔑 Why Source Code Management (SCM) is Needed in DevOps
+
+1. **Collaboration**
+
+   * Multiple developers can work on the same codebase without overwriting each other’s changes.
+   * Branches help teams work in parallel (features, bug fixes, hotfixes).
+
+2. **Version Control**
+
+   * Every change is tracked with commit history.
+   * You can roll back to a previous stable version if new code breaks.
+
+3. **Traceability**
+
+   * Each commit links to an issue, feature, or bug.
+   * Easy to see *who changed what, when, and why*.
+
+4. **Code Review & Quality**
+
+   * Pull/Merge Requests allow peer review before merging code to main branches.
+   * Helps maintain code standards and catch bugs early.
+
+5. **Integration with CI/CD**
+
+   * SCM integrates with Jenkins, GitHub Actions, GitLab CI, Azure DevOps, etc.
+   * Any code push can trigger automated build, test, and deployment pipelines.
+
+6. **Branching Strategies**
+
+   * GitFlow, GitHub Flow, Trunk-based development give structured workflows.
+   * Ensures stable *production branches* while developers experiment safely.
+
+7. **Disaster Recovery & Backup**
+
+   * Code stored in remote repositories (GitHub, GitLab, Bitbucket) acts as a backup.
+   * If local systems crash, code is still safe.
+
+8. **Collaboration Beyond Code**
+
+   * SCM also stores configuration files, scripts, Helm charts, Terraform templates.
+   * This makes **Infrastructure as Code (IaC)** and DevOps practices possible.
+
+9. **Audit & Compliance**
+
+   * Commit logs provide an audit trail for regulatory/compliance checks.
+   * Required in industries like banking, healthcare, government.
+
+10. **Faster Delivery**
+
+* With branching + automation, teams can deliver features and fixes faster, reducing time-to-market.
+
+---
+
+👉 In short: **SCM is the backbone of DevOps pipelines** — without it, automation, collaboration, rollback, and CI/CD would be impossible.
+
+
+
